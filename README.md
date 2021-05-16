@@ -11,7 +11,4 @@ Tenemos un archivo reporte.csv que tiene el archivo original sin el preambulo y 
 
 El script rearma_dataset.R toma ese archivo y arma una matriz nueva con radios censales en las filas y nacionalidades en las columnas. Y un archivo resumen.csv que indica los valores agregados sobre todos los radios (checkeado que coincida con el original)
 
-
-## Faltaría
-
-Archivo con los poligonos de radios censales de CABA (lo tengo que buscar). Y con ese podrían venir otras variables.
+Agregados también los radios en formato geográfico en un archivo radios.gpkg
