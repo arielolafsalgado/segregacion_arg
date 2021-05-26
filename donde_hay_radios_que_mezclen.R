@@ -18,6 +18,7 @@ radios$poblacion_venezuela = (nac[,'VENEZUELA'])[match(as.numeric(radios$link),n
 radios$poblacion_colombia = (nac[,'COLOMBIA'])[match(as.numeric(radios$link),nac$id_radio)]
 radios$poblacion_brasil = (nac[,'BRASIL'])[match(as.numeric(radios$link),nac$id_radio)]
 radios$poblacion_nigeria = (nac[,'NIGERIA'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_senegal = (nac[,'SENEGAL'])[match(as.numeric(radios$link),nac$id_radio)]
 radios$poblacion_uruguay = (nac[,'URUGUAY'])[match(as.numeric(radios$link),nac$id_radio)]
 radios$poblacion_italia = (nac[,'ITALIA'])[match(as.numeric(radios$link),nac$id_radio)]
 radios$poblacion_eeuu = (nac[,'ESTADOS UNIDOS'])[match(as.numeric(radios$link),nac$id_radio)]
@@ -33,6 +34,7 @@ plot(radios['poblacion_venezuela'],lwd=0.01,logz=TRUE)
 plot(radios['poblacion_colombia'],lwd=0.01,logz=TRUE)
 plot(radios['poblacion_brasil'],lwd=0.01,logz=TRUE)
 #plot(radios['poblacion_nigeria'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_senegal'],lwd=0.01,logz=TRUE)
 plot(radios['poblacion_uruguay'],lwd=0.01,logz=TRUE)
 plot(radios['poblacion_italia'],lwd=0.01,logz=TRUE)
 plot(radios['poblacion_eeuu'],lwd=0.01,logz=TRUE)
