@@ -1,7 +1,10 @@
 require(sf)
 radios = read_sf('radios.gpkg')
 radios = radios[match(unique(radios$link),radios$link),]
+
 nac = read.csv('matriz_nacionalidades.csv',check.names =  FALSE)
+nac$nac_sd<-apply(nac[,-1],1,sd)
+
 nac_resu = read.csv('resumen_nacionalidades.csv')
 colnames(nac_resu) = c('Nacionalidad','Casos')
 
@@ -56,7 +59,6 @@ plot(radios['hay_nac_oe'],lwd=0.01)
 radios[is.na(radios$nac_over_expected),'link']
 
 radios[which(is.element(radios$link,radios$link[1])),]
-
 
 M = as.matrix(nac[,2:ncol(nac)])
 M = t(M)%*%M
