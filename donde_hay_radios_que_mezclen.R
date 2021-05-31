@@ -2,7 +2,6 @@ require(sf)
 radios = read_sf('radios.gpkg')
 radios = radios[match(unique(radios$link),radios$link),]
 nac = read.csv('matriz_nacionalidades.csv',check.names =  FALSE)
-oNac = names(sort(colSums(nac[2:ncol(nac)]),decreasing=TRUE))
 nac_resu = read.csv('resumen_nacionalidades.csv')
 colnames(nac_resu) = c('Nacionalidad','Casos')
 
@@ -10,29 +9,39 @@ p_radio = 1/nrow(radios)
 nac_resu$casos_med = nac_resu$Casos*p_radio
 nac_resu$casos_sd = sqrt(nac_resu$Casos*p_radio*(1-p_radio))
 
-pNac = function(nacio){
-  if(nacio!='all'){
-    r = (nac[,nacio])[match(as.numeric(radios$link),nac$id_radio)]
-  }else{
-    r = (rowSums(nac[,2:ncol(nac)]))[match(as.numeric(radios$link),nac$id_radio)]
-  }
-  return(r)
-}
+radios$poblacion_extrajera = rowSums(nac[,2:ncol(nac)])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_bolivia = (nac[,'BOLIVIA'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_peru = (nac[,'PERU'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_paraguay = (nac[,'PARAGUAY'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_chile = (nac[,'CHILE'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_venezuela = (nac[,'VENEZUELA'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_colombia = (nac[,'COLOMBIA'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_brasil = (nac[,'BRASIL'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_nigeria = (nac[,'NIGERIA'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_senegal = (nac[,'SENEGAL'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_uruguay = (nac[,'URUGUAY'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_italia = (nac[,'ITALIA'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_eeuu = (nac[,'ESTADOS UNIDOS'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_china = (nac[,'CHINA'])[match(as.numeric(radios$link),nac$id_radio)]
+radios$poblacion_coreaD = (nac[,'COREA DEMOCRATICA'])[match(as.numeric(radios$link),nac$id_radio)]
+nac_resu$Nacionalidad[1:10]
+plot(radios['poblacion_extrajera'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_bolivia'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_peru'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_paraguay'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_chile'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_venezuela'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_colombia'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_brasil'],lwd=0.01,logz=TRUE)
+#plot(radios['poblacion_nigeria'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_senegal'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_uruguay'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_italia'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_eeuu'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_china'],lwd=0.01,logz=TRUE)
+plot(radios['poblacion_coreaD'],lwd=0.01,logz=TRUE)
 
-for(nacio in colnames(nac)[2:ncol(nac)]){
-  radios[[paste('p',nacio,sep='')]] = pNac(nacio)
-}
-radios[[paste('p','ALL',sep='')]] = pNac('all')
-pdf('nacios.pdf')
-for(nacio in oNac){
-  if(min(radios[[paste('p',nacio,sep='')]])>0){
-    plot(radios[paste('p',nacio,sep='')],logz=TRUE)
-  }else{
-    plot(radios[paste('p',nacio,sep='')],logz=FALSE)
-  }
-}
-plot(radios[paste('pALL')],logz=TRUE)
-dev.off()
+
 radios_over_expected = sapply(1:nrow(nac),function(row){
   nac_medido = nac[row,2:ncol(nac)]
   nac_medido = nac_medido[nac_resu$Nacionalidad]
