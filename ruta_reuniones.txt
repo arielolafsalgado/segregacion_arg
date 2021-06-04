@@ -1,0 +1,26 @@
+Fecha: 04/06/21
+
+NACIONALIDADES:
+-) Defincion de nacionalidades o categorías de interés: 
+	Elegimos un tamaño de corte (1%) y analizamos qué pasa con las comunidades más pequeñas ¿las agregamos por continente? ¿o cómo? Ver algunos preliminares en ANALISIS_NAC_RESU.R
+
+-) Una vez definidas categorías, armar un mapa para varias Nacionalidades. Se pueden incluir puntos 
+dentro de cada poligono segun cantidad de casos para la visualizacion. Ver si la funcion dotsInPolys sirve.
+
+-) Distinguir los radios censales que más "mezclan" de aquellos que se asocian a una Nacionalidad o Grupo (¡al estilo de uso de calles!)
+
+-) Tener presente que no estamos mirando la poblacion total del radio.
+ 
+
+OTRAS IDEAS:
+-) Analizar si tiene sentido ver segregacion deacuerdo a ingresos.
+Ine me compartió estos links
+https://www.estadisticaciudad.gob.ar/eyc/?p=84464
+
+https://www.andytow.com/blog/2009/07/22/mapa-de-la-riqueza-conurbana/
+
+http://www.agencianova.com.ar/nota.asp?n=2019_8_27&id=77106&id_tiponota=4
+
+https://www.buenosaires.gob.ar/node/desarrollo-urbano-y-transporte/ley-para-el-desarrollo-urbano-y-habitat-sustentable/mapa-0
+
+-) Armar mapas similares para "afrodescendientes"
