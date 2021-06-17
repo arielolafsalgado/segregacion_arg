@@ -14,6 +14,8 @@ dentro de cada poligono segun cantidad de casos para la visualizacion. Ver si la
 
 OTRAS IDEAS:
 -) Analizar si tiene sentido ver segregacion deacuerdo a ingresos.
+VER AQUÍ QUE ESTÁ HECHO: https://www.utdt.edu/ver_contenido.php?id_contenido=14953&id_item_menu=25812
+
 Ine me compartió estos links
 https://www.estadisticaciudad.gob.ar/eyc/?p=84464
 
